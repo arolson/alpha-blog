@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
-
+    # New: Article to create
     def new
         @article = Article.new
     end
+    
     # Create: New Article
     def create
         #render plain: params[:article].inspect
@@ -14,15 +15,18 @@ class ArticlesController < ApplicationController
            render 'new' # Reload the new article page
        end
     end
+    
     # Show: Created article
     def show
         @article = Article.find(params[:id])
     end
+    
     # Edit: Existing Article
     def edit
        # @article.edit(params[:id])
        @article = Article.find(params[:id])
     end
+    
     # Update: Existing Article
     def update
         @article = Article.find(params[:id])
@@ -33,9 +37,18 @@ class ArticlesController < ApplicationController
             render 'edit'
         end
     end
+    
     # Index: Display all Articles
     def index
        @articles = Article.all 
+    end
+    
+    # Destroy: Selected Article
+    def destroy
+        @article = Article.find(params[:id])
+        @article.destroy
+        flash[:notice] = "The article was successfully destroyed"
+        redirect_to articles_path
     end
     
     private

@@ -9,11 +9,7 @@
   </head>
   
 <!--Retrieve messages from flash notice-->
-<% flash.each do |name, msg| %>
-  <ul>
-    <li> <%= msg %> </li>
-  </ul>
-<% end %>
+<%= render 'forms/messages' %>
 
   <body>
     <%= yield %>
