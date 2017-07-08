@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+    before_action :set_article, only: [:edit, :update, :show, :destroy] # calls within the functions
     # New: Article to create
     def new
         @article = Article.new
@@ -18,18 +19,17 @@ class ArticlesController < ApplicationController
     
     # Show: Created article
     def show
-        @article = Article.find(params[:id])
+        
     end
     
     # Edit: Existing Article
     def edit
-       # @article.edit(params[:id])
-       @article = Article.find(params[:id])
+       
     end
     
     # Update: Existing Article
     def update
-        @article = Article.find(params[:id])
+        
         if @article.update(article_params)
             flash[:notice] = "Article was successfully updated" #Flash a message..views/layouts/application.html.erb
             redirect_to article_path(@article) #redirects to the article
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
     
     # Destroy: Selected Article
     def destroy
-        @article = Article.find(params[:id])
+        
         @article.destroy
         flash[:notice] = "The article was successfully destroyed"
         redirect_to articles_path
@@ -54,5 +54,9 @@ class ArticlesController < ApplicationController
     private
     def article_params
         params.require(:article).permit(:title, :description)
+    end
+    
+    def set_article
+       @article = Article.find(params[:id]) 
     end
 end
