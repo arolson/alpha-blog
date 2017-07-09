@@ -24,3 +24,40 @@ $navbar-default-bg: #00a86b;
     color: #000;
     //text-decoration: none;
 }
+
+.center {
+    text-align: center;
+}
+
+.jumbotron {
+    //background-color: #00a86b;
+    background-image: asset-url('shi-shi-beach-washington.jpg');
+    background-size: cover;
+    height: 550px;
+}
+
+.jumbotron h1{
+    text-align: center;
+    color: #000;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+.btn-lg{
+    background-color: #00a86b;
+    font-size: 1.7em;
+}
+.footer {
+    
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+    color: #777;
+}
+.footer small {
+    float: left;
+}
+.footer p {
+    float: right;
+    margin-left: 15px;
+}
