@@ -7,7 +7,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
+<!--Navigation bar-->
+<%= render 'bootstrap/navigation' %>
+
 <!--Retrieve messages from flash notice-->
 <%= render 'forms/messages' %>
 
