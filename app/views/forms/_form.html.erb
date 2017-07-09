@@ -1,13 +1,5 @@
 <body>
-<!--Error Handeling-->
-<% if @article.errors.any? %>
-    <h3>The following Erros prevented the article from being created</h3>
-    <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-        <li> <%= msg %> </li>
-        <% end %>
-    </ul>
-<% end %>
+    <%= render 'forms/errors', obj: @article %>
 <div class= 'row'>
     <div class= 'col-md-12'>
         

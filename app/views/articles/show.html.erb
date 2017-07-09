@@ -1,13 +1,10 @@
-<h1>Showing Selected Article</h1>
 
+<h2 align= 'center'>Title: <%= @article.title %></h2>
 <body>
-    <p>
-        Title: <%= @article.title %>
-    </p>
-    
-    <p>
-        Description: <%= @article.description %>
-    </p>
-<%= link_to "Edit", edit_article_path(@article) %><br/>
-<%= link_to "Back to Articles Listing", articles_path %>
+<div class= 'well col-xs-8 col-xs-offset-2'>
+    <h4 class= 'center description'><strong>Description:</strong></h4>
+    <hr>
+    <%= simple_format(@article.description) %>
+   <%= render 'forms/article_actions', obj: @article %>
+</div>
 </body>

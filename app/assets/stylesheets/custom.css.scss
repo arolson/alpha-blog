@@ -61,3 +61,19 @@ $navbar-default-bg: #00a86b;
     float: right;
     margin-left: 15px;
 }
+.article_actions{
+    border-top: 1px solid #eaeaea;
+    padding-top: 10px;
+}
+.description{
+    margin-top: 0;
+}
+.article_title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.article_body{
+    border-top: 1px solid #eaeaea;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
