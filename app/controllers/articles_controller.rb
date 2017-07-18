@@ -8,7 +8,6 @@ class ArticlesController < ApplicationController
     # Create: New Article
     def create
         # debugger
-        #render plain: params[:article].inspect
         @article = Article.new(article_params) #create a new article
         @article.user = User.first #temporary
        if @article.save
