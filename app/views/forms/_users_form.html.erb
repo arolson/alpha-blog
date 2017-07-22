@@ -34,13 +34,13 @@
         <!--Submit Button-->
         <div class= "form-group">
             <div class= "col-sm-offset-2 col-sm-10">
-                <%= f.submit( @user.new_record? ? "Sign up" : "Update", class: "btn btn-primary btn-lg" ) %>
+                <%= f.submit( @user.new_record? ? "Sign up" : "Update", class: "btn btn-primary btn-md" ) %>
             </div>
         </div>
             
         <% end %>
     </div>
 </div>
-<div class= "col-sm-offset-2 col-sm-10">
+<div class= "col-sm-offset-0 col-sm-10">
 <%= link_to 'Home', root_path, class: "btn btn-xs btn-success" %>
 </div>
