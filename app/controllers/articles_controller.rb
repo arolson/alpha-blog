@@ -1,5 +1,13 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:edit, :update, :show, :destroy] # calls within the functions
+    before_action :reguire_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+    # Index: Display all Articles
+    def index
+        #@article = Article.all
+        @articles = Article.paginate(page: params[:page], per_page: 5) 
+    end
+    
     # New: Article to create
     def new
         @article = Article.new
@@ -9,7 +17,8 @@ class ArticlesController < ApplicationController
     def create
         # debugger
         @article = Article.new(article_params) #create a new article
-        @article.user = User.first #temporary
+        #@article.user = User.first #temporary
+        @article.user = current_user
        if @article.save
            flash[:success] = "Article was successfully created" #Flash a message..views/layouts/application.html.erb
            redirect_to article_path(@article) #redirects to the article
@@ -39,11 +48,6 @@ class ArticlesController < ApplicationController
         end
     end
     
-    # Index: Display all Articles
-    def index
-       @articles = Article.all 
-    end
-    
     # Destroy: Selected Article
     def destroy
         
@@ -60,4 +64,12 @@ class ArticlesController < ApplicationController
     def set_article
        @article = Article.find(params[:id]) 
     end
+    
+    def require_same_user
+        if current_user != @article.user
+            flash[:danger] = "You can only edit or delete your own article"
+            redirect_to root_path
+        end
+    end
+    
 end
