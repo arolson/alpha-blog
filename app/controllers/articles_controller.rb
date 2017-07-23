@@ -41,6 +41,7 @@ class ArticlesController < ApplicationController
     def update
         
         if @article.update(article_params)
+            @article.save
             flash[:success] = "Article was successfully updated" #Flash a message..views/layouts/application.html.erb
             redirect_to article_path(@article) #redirects to the article
         else
@@ -55,10 +56,10 @@ class ArticlesController < ApplicationController
         flash[:danger] = "The article was successfully destroyed"
         redirect_to articles_path
     end
-    
+   
     private
     def article_params
-        params.require(:article).permit(:title, :description)
+        params.require(:article).permit(:title, :description, :private)
     end
     
     def set_article
@@ -66,7 +67,7 @@ class ArticlesController < ApplicationController
     end
     
     def require_same_user
-        if current_user != @article.user
+        if current_user != @article.user and !current_user.admin?
             flash[:danger] = "You can only edit or delete your own article"
             redirect_to root_path
         end
