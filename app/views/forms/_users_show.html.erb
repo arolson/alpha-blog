@@ -1,4 +1,5 @@
 <!--Show all Articles-->
+
 <body>
     <% 
     if !logged_in?
@@ -18,9 +19,9 @@
                             <%= link_to article.title, article_path(article) %>
                         </div>
                         <div class= 'article-body'>
-                            
-                            <%= truncate(article.description, length: 100) %>
-                            
+                            <p>
+                                 <%= truncate(article.description, length: 100) %>
+                            </p>
                             <div class="article-meta-details">
                                 <small>
                                     Created by: <%= article.user.username if article.user %>, 
