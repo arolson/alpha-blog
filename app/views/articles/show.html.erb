@@ -16,7 +16,7 @@
         <% end %>
     <h4 class= 'center description'><strong>Description:</strong></h4>
     <hr>
-    <%= simple_format(@article.description) %>
+    <%= raw @article.description %>
    <%= render 'forms/article_actions', obj: @article %>
 </div>
 </body>
